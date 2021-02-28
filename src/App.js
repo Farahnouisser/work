@@ -1,23 +1,50 @@
-import logo from './logo.svg';
+/* eslint-disable */
 import './App.css';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
+import React, { Suspense } from 'react'
+import { BrowserRouter,
+  Redirect,
+  Route,
+  Switch
+} from 'react-router-dom'
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: 'flex',
+  }}))
+
+
+  const loading = (
+    <div className="pt-3 text-center">
+      <div className="sk-spinner sk-spinner-pulse"></div>
+    </div>
+  )
+
+  // Template
+const Template = React.lazy(() => import('./Layouts.js/Template'));
+
+  
+// Pages
+const Login = React.lazy(() => import('./Pages/SignIn'));
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+
+<BrowserRouter>
+
+
+<React.Suspense fallback={loading}>
+            <Switch>
+              <Route exact path="/login" name="Login Page" render={props => <Login {...props}/>} />
+              <Route path="/" name="Home" render={props => <Template {...props}/>} />
+
+            </Switch>
+          </React.Suspense>
+
+
+  </BrowserRouter>
     </div>
   );
 }
