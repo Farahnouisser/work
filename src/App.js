@@ -7,6 +7,7 @@ import { BrowserRouter,
   Route,
   Switch
 } from 'react-router-dom'
+//import Product from './Components/Products/Product'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,6 +23,7 @@ const useStyles = makeStyles((theme) => ({
 
   // Template
 const Template = React.lazy(() => import('./Layouts.js/Template'));
+
 
   
 // Pages

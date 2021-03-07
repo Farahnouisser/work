@@ -9,11 +9,7 @@ import IconButton from '@material-ui/core/IconButton';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import Listitems from './SidebarListitem'
 import ListItemGroup from './Listitemgroups'
-import SendIcon from '@material-ui/icons/Send';
-import StarBorder from '@material-ui/icons/StarBorder';
 import axios from 'axios'
-import PhoneInTalkIcon from '@material-ui/icons/PhoneInTalk';
-import DnsIcon from '@material-ui/icons/Dns';
 //redux
 import { fetchMenu } from '../redux/sidebar/sidebarActions'
 

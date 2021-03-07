@@ -16,6 +16,7 @@ import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import StarBorder from '@material-ui/icons/StarBorder';
 import SidebarListItem from './SidebarListitem'
+import MaterialIconAsync from './SidebarListitem'
 
 export default function SidebarListitemgroup(props) {
     let {text, icon , items, nestedItem }= props;
@@ -47,7 +48,8 @@ export default function SidebarListitemgroup(props) {
  <>
       <ListItem button onClick={handleClick}>
         <ListItemIcon>
-        {React.createElement(icon)}
+        <MaterialIconAsync icon ={icon}/>
+
         </ListItemIcon>
         <ListItemText primary={text} />
         {open ? <ExpandLess /> : <ExpandMore />}
