@@ -28,6 +28,7 @@ const Template = React.lazy(() => import('./Layouts.js/Template'));
   
 // Pages
 const Login = React.lazy(() => import('./Pages/SignIn'));
+const Grid = React.lazy(() => import('./Components/NestedGrid/NestedGrid'));
 
 
 function App() {
@@ -40,6 +41,8 @@ function App() {
 <React.Suspense fallback={loading}>
             <Switch>
               <Route exact path="/login" name="Login Page" render={props => <Login {...props}/>} />
+              <Route exact path="/table" name="Login Page" render={props => <Grid {...props}/>} />
+
               <Route path="/" name="Home" render={props => <Template {...props}/>} />
 
             </Switch>
