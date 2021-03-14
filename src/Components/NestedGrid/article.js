@@ -6,36 +6,37 @@ import Tab from "./Tab";
 
 export default function GridExample() {
   const columnDef = [
-    { field: "employeeId", hide: true },
-    { field: "employeeName", hide: true },
-    { field: "jobTitle", hide: false },
-    { field: "employmentType", hide: false },
+    { field: "ArticleId", hide: true },
+    { field: "Article", hide: true },
+    { field: "Title", hide: false },
+    { field: "Type", hide: false },
+    { field: "Status", hide: false },
   ];
 
   const autoGroupColumnDef = {
-    headerName: "Employee",
-    field: "employeeName",
+    headerName: "Article",
+    field: "Article",
     cellRendererParams: {
       innerRenderer: function (params) {
-        return params.data.employeeName;
+        return params.data.Article;
       },
     },
   };
 
   const getServerSideGroupKey = (dataItem) => {
-    return dataItem.employeeId;
+    return dataItem.ArticleId;
   };
 
   return (
     <div>
       <Tab
-        fetchUrl="https://www.ag-grid.com/example-assets/small-tree-data.json"
+        fetchUrl="https://api.mocki.io/v1/d90a8a7a"
         autoGroupColumnDef={autoGroupColumnDef}
         getDataPath={function (data) {
-          return data.employeeName;
+          return data.Article;
         }}
         getRowNodeId={function (data) {
-          return data.employeeId;
+          return data.ArticleId;
         }}
         getServerSideGroupKey={getServerSideGroupKey}
         columnDefs={columnDef}
@@ -45,21 +46,23 @@ export default function GridExample() {
   );
 }
 
+const newItemCount = 0;
 function extractRowsFromData(groupKeys, data) {
   if (groupKeys.length === 0) {
     return data.map(function (d) {
       return {
         group: !!d.children,
-        employeeId: d.employeeId,
-        employeeName: d.employeeName,
-        employmentType: d.employmentType,
-        jobTitle: d.jobTitle,
+        ArticleId: d.ArticleId,
+        Type: d.Type,
+        Title: d.Title,
+        Status: d.Status,
+        Article: d.Article,
       };
     });
   }
   const key = groupKeys[0];
   for (let i = 0; i < data.length; i++) {
-    if (data[i].employeeId === key) {
+    if (data[i].ArticleId === key) {
       return extractRowsFromData(groupKeys.slice(1), data[i].children.slice());
     }
   }
